@@ -4,12 +4,13 @@
     <link href="index.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hanalei Fill">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="shortcut icon" src="favicon.ico" />
 </head>
 
 <header>
     <title>Meeple Like Us</title>
     <div class="navbar">
-        <a href="index.html" class="title">Meeple Like Us</a>
+        <a href="index.html" class="title"><img src="logo.png" class="logo"></img>Meeple Like Us</a>
         <button class="signinButton">
             <a href="login.html">Sign In</a>
         </button>
@@ -17,9 +18,37 @@
 </header>
 
 <body class="body">
-    <div class="gameListCard">
-        Hi
+    <div class="gameListCard gameContainer">
+        <div class="profile">
+            <span class="avatar"></span>
+            <p>Lanh Nguyen</p>
+        </div>
+        <div class="gameInfo">
+            <span class="gameTitle">Dominion</span>
+            <p>123 E. Idaho St.</p>
+            <p>2/28/2019</p>
+            <p>2-8 Players</p>
+        </div>
+        <div class="seating">
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <button class="join">Join</button>
+        </div>
     </div>
+
+    <a href="newGame.html">
+        <img src="add.png" class="addGame">
+        </img>
+    </a>
+
 </body>
 
 </html>
