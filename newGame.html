@@ -10,7 +10,7 @@
 <header>
     <title>Meeple Like Us</title>
     <div class="navbar">
-        <a href="index.html" class="title"><img src="logo.png" class="logo"></img>Meeple Like Us</a>
+        <a href="index.php" class="title"><img src="logo.png" class="logo"></img>Meeple Like Us</a>
     </div>
 </header>
 
@@ -19,27 +19,29 @@
         <div class="loginCard">
             Create New Game
         </div>
-        <label>
-            Host<input class="input">
-        </label>
-        <label>
-            Game<input class="input">
-        </label>
-        <label>
-            Location<input class="input">
-        </label>
-        <label>
-            Date<input class="input" placeholder="mm/dd/yyyy">
-        </label>
-        <label>
-            Number of Players<input class="input" id="movie" type="number" value="0" />
-        </label>
-        <button class="register">
-            <a href="index.html">nevermind</a>
-        </button>
-        <button class="loginButton">
-            okay
-        </button>
+        <form method="POST" action="newGame.php">
+            <label>
+                Host<input name="host" class="input">
+            </label>
+            <label>
+                Game<input name="game" class="input">
+            </label>
+            <label>
+                Location<input name="location" class="input">
+            </label>
+            <label>
+                Date<input name="date" class="input" placeholder="mm/dd/yyyy">
+            </label>
+            <label>
+                Number of Players<input name="players" class="input" id="movie" type="number" value="0" />
+            </label>
+            <button class="register">
+                <a href="index.php">nevermind</a>
+            </button>
+            <button class="loginButton">
+                okay
+            </button>
+        </form>
     </div>
 </body>
 

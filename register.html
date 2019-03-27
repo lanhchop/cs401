@@ -10,7 +10,7 @@
 <header>
     <title>Meeple Like Us</title>
     <div class="navbar">
-        <a href="index.html" class="title"><img src="logo.png" class="logo"></img>Meeple Like Us</a>
+        <a href="index.php" class="title"><img src="logo.png" class="logo"></img>Meeple Like Us</a>
     </div>
 </header>
 
@@ -19,24 +19,26 @@
         <div class="loginCard">
             Create Account
         </div>
-        <label>
-            Name<input class="input">
-        </label>
-        <label>
-            Username<input class="input">
-        </label>
-        <label>
-            Email<input class="input">
-        </label>
-        <label>
-            Password<input class="input">
-        </label>
-        <button class="register">
-            <a href="login.html">sign in</a>
-        </button>
-        <button class="loginButton">
-            okay
-        </button>
+        <form method="POST" action="register.php">
+            <label>
+                Name<input name="name" class="input">
+            </label>
+            <label>
+                Username<input name="username" class="input">
+            </label>
+            <label>
+                Email<input name="email" class="input">
+            </label>
+            <label>
+                Password<input name="password" class="input">
+            </label>
+            <button class="register">
+                <a href="login.html">sign in</a>
+            </button>
+            <button type="submit" class="loginButton">
+                okay
+            </button>
+        </form>
     </div>
 </body>
 
