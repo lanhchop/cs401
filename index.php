@@ -18,11 +18,14 @@
                     session_start();
                     if (isset($_SESSION["username"])){
                         echo "hi " . $_SESSION["username"];
+                        echo '<a href="logout.php"> Logout </a>';
+                        echo '<div>' . phpversion() . '</div';
                     } else{
-                        echo '<a href="login.html">Sign In</a>';
+                        echo '<a href="login.php">Sign In</a>';
                     }
                 ?>
             </span>
+            
         </div>
     </header>
     <div class="gameListCard gameContainer">
@@ -51,13 +54,13 @@
         </div>
     </div>
 
-    <a href="newGame.html">
+    <a href="newGame.php">
         <img src="img/add.png" class="addGame">
     </a>
 
     <footer>
         <div class="footerbar">
-            Meeple Like Us | Lanh Nguyen | CS401 Intro to Web Development
+            Meeple Like Us 	&copy; by Lanh Nguyen
             </button>
         </div>
     </footer>

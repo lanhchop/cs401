@@ -23,7 +23,7 @@ input{
     bottom: 0;
     right: 0;
     width: 45px;
-    padding: 30px;
+    padding: 0 30px 100px 0;
 }
 
 .avatar{
@@ -125,12 +125,15 @@ input{
 }
 
 .footerbar{
-    height: 30px;
-    position: fixed;
+    background-color: #FFF4E4;
     bottom: 0;
+    font-size: 12px;
+    height: 15px;
     left: 0;
+    padding: 12px;
+    position: fixed;
     right: 0;
-    padding: 20px;
+    z-index: 999;
 }
 
 .seating{
