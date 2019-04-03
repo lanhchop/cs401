@@ -54,7 +54,7 @@
         <span class="gameTitle">{$event['game']}</span>
         <p>{$event['location']}</p>
         <p>{$event['date']}</p>
-        <p>{$event['players']}</p>
+        <p>{$event['players']} Players</p>
     </div>
     <div class="seating">
         <div>
