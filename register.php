@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label>
                 Password
                 <?php
-                echo "<input name=\"password\" class=\"input\">";
+                echo "<input type=\"password\" name=\"password\" class=\"input\">";
                 echo "<div class=\"error\">{$passwordError}</div>";
                 ?>
             </label>
