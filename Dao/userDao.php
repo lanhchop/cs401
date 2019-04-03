@@ -2,14 +2,23 @@
 require_once 'dao.php';
 class userDao extends dao {
   function createUser($name, $username, $password) {
-    $dbh = $this->getConnection();
-    $stmt = $dbh->prepare("INSERT INTO users (name, username, password) VALUES (:name, :username, :password);");
-    $val = $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-    $val = $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-    $val = $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+    $conn = $this->getConnection();
+    $stmt = $conn->prepare("INSERT INTO users (name, username, password) VALUES (:name, :username, :password);");
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+    $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 
-    $val = $stmt->execute();
-    $error = $stmt->errorInfo();
-    $x = 4;
+    $stmt->execute();
+    return $conn->lastInsertId();
+  }
+
+  function getUser($username){
+    $conn = $this->getConnection();
+
+    $stmt = $conn->prepare("SELECT * FROM users where username = :username;");
+    $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+    
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 }

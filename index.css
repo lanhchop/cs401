@@ -1,23 +1,9 @@
-a{
+a {
     color: inherit;
     text-decoration: none;
 }
 
-button{
-    background-color: #FF7657;
-    border: none;
-    color: white;
-    height: 25px;
-    font-size: 15px;
-}
-
-input{
-    border: none;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-.addGame{
+.addGame {
     position: fixed;
     float: right;
     bottom: 0;
@@ -26,7 +12,7 @@ input{
     padding: 0 30px 100px 0;
 }
 
-.avatar{
+.avatar {
     height: 50px;
     width: 50px;
     background-color: #123b;
@@ -34,25 +20,39 @@ input{
     display: inline-block;
 }
 
-.profile{
+button {
+    background-color: #FF7657;
+    border: none;
+    color: white;
+    height: 25px;
+    font-size: 15px;
+}
+
+input {
+    border: none;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.profile {
     width: 50%;
     margin: auto;
 }
 
-.body{
+.body {
     background-color: #ffffff;
     font-family: Oswald;
 }
 
-.card{
-    background-color: #FFBA5A;
+.card {
+    background-color: #dae1e7;
     margin: 150px auto;
     width: 300px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     padding: 30px 30px 60px 30px;
 }
 
-.circle{
+.circle {
     height: 25px;
     width: 25px;
     background-color: #123b;
@@ -60,15 +60,21 @@ input{
     display: inline-block;
 }
 
-.gameInfo{
+.error {
+    color: red;
+    font-size: 12px;
+    font-family: Helvetica;
+}
+
+.gameInfo {
     padding-left: 20px;
 }
 
-.gameListCard{
+.gameListCard {
     background-color: rgba(196, 196, 196);
     margin: 150px auto;
     max-width: 500px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     padding: 30px;
 }
 
@@ -77,55 +83,56 @@ input{
     grid-template-columns: 25% auto 20%;
 }
 
-.gameTitle{
+.gameTitle {
     font-size: 20px;
 }
 
-.input{
+.input {
     width: 100%;
 }
 
-.join{
+.join {
     vertical-align: bottom;
 }
 
-.signinButton{
+.signinButton {
     float: right;
     margin: 30px 30px;
     margin-top: 10px;
 }
 
-.logo{
+.logo {
     width: 50px;
     padding: 30px 30px 0 10px;
     margin: auto;
 }
 
-.loginCard{
-    padding-bottom:20px;
+.loginCard {
+    padding-bottom: 20px;
 }
 
-.name{
+.name {
     float: right;
     font-family: Oswald;
     margin: 30px 30px;
 }
 
-.navbar{
+.navbar {
     background-color: #FF7657;
     height: 80px;
     position: fixed;
     top: 0;
-    right: 0; 
+    right: 0;
     left: 0;
     color: white;
     font-family: Hanalei Fill;
     letter-spacing: 1.5px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.footerbar{
-    background-color: #FFF4E4;
+.footerbar {
+    background-color: #183661;
+    color:white;
     bottom: 0;
     font-size: 12px;
     height: 15px;
@@ -136,31 +143,38 @@ input{
     z-index: 999;
 }
 
-.seating{
+.logoutButton {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.seating {
     display: grid;
     grid-template-columns: auto;
 }
 
-.title{
+.title {
     font-size: 30px;
-    padding-top: 30px; 
+    padding-top: 30px;
     padding-left: 20px;
 }
 
-
-.username{
+.username {
     font-family: Oswald;
-    float:right;
+    float: right;
     padding: 20px;
 }
+
 /* ------- Register Page ------- */
 
-.register{
+.register {
     float: left;
     margin: 20px 0;
 }
 
-.loginButton{
+.loginButton {
     float: right;
     margin: 20px 0;
 }

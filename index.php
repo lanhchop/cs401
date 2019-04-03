@@ -18,17 +18,58 @@
                     session_start();
                     if (isset($_SESSION["username"])){
                         echo "hi " . $_SESSION["username"];
-                        echo '<a href="logout.php"> Logout </a>';
-                        echo '<div>' . phpversion() . '</div';
+                        echo '<button><a class="logoutButton" href="logout.php"> LOGOUT </a></button>';
+                        // echo '<div>' . phpversion() . '</div';
                     } else{
                         echo '<a href="login.php">Sign In</a>';
                     }
                 ?>
             </span>
-            
         </div>
     </header>
-    <div class="gameListCard gameContainer">
+
+    <?php
+    require_once("Dao/eventDao.php");
+    require_once("Dao/scheduleDao.php");
+    
+    $eventDao = new eventDao();
+    $events = $eventDao->getFutureEvents();
+    
+    $scheduleDao = new scheduleDao();
+    
+    foreach ($events as $event){
+        $attendees = $scheduleDao->getAttendees($event_id);
+        $seats = '';
+        foreach ($attendees as $attendee) {
+            $seats .= '<div class="circle"></div>';
+        }
+              
+       echo <<<HTML
+<div class="gameListCard gameContainer">
+    <div class="profile">
+        <span class="avatar"></span>
+        <p>User #{$event['host_user_id']}</p>
+    </div>
+    <div class="gameInfo">
+        <span class="gameTitle">{$event['game']}</span>
+        <p>{$event['location']}</p>
+        <p>{$event['date']}</p>
+        <p>{$event['players']}</p>
+    </div>
+    <div class="seating">
+        <div>
+            {$seats}
+        </div>
+        <form method="POST">
+            <button type="submit" class="join" >Join</button>
+        </form>
+    </div>
+</div>
+HTML;
+    }
+
+    ?>
+    <!-- <div class="gameListCard gameContainer">
         <div class="profile">
             <span class="avatar"></span>
             <p>Lanh Nguyen</p>
@@ -41,18 +82,18 @@
         </div>
         <div class="seating">
             <div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+                <?php
+                // for (i = 0; i<event.user_id.length; i++){
+                    // echo 
+                        // '<div class="circle"></div>';
+                // }
+                ?>
             </div>
-            <button class="join">Join</button>
+            <form method="POST" action="schedule.php?event_id=">
+                <button type="submit" class="join" >Join</button>
+            </form>
         </div>
-    </div>
+    </div> -->
 
     <a href="newGame.php">
         <img src="img/add.png" class="addGame">

@@ -7,7 +7,6 @@ if (!isset($_SESSION["username"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $host = $_POST["host"];
     $game = $_POST["game"];
     $location = $_POST["location"];
     $date = $_POST["date"];
@@ -15,10 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $valid = true;
 
-    if (empty($host) || strlen($host) < 1) {
-        $hostError = "Please enter the name of the host";
-        $valid = false;
-    }
     if (empty($game) || strlen($game) < 1) {
         $gameError = "Please enter a game";
         $valid = false;
@@ -42,7 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($valid) {
-        echo "A new game has been created!";
+        require_once 'Dao/eventDao.php';
+        $eventDao = new eventDao();
+        $userID = $_SESSION['userId'];
+        $eventDao -> createEvent($userID, $game, $location, $date, $players);
+        echo "A new event has been created!";
         header("Location: index.php");
     }
 }
@@ -80,25 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <form method="POST" action="newGame.php">
             <label>
-                Host
-                <?php
-                echo "<input name=\"host\" class=\"input\" value=\"{$host}\">";
-                echo "<div>{$hostError}</div>";
-                ?>
-            </label>
-
-            <label>
                 Game
                 <?php
                 echo "<input name=\"game\" class=\"input\" value=\"{$game}\">";
-                echo "<div>{$gameError}</div>";
+                echo "<div class=\"error\">{$gameError}</div>";
                 ?>
             </label>
             <label>
                 Location
                 <?php
                 echo "<input name=\"location\" class=\"input\" value=\"{$location}\">";
-                echo "<div>{$locationError}</div>";
+                echo "<div class=\"error\">{$locationError}</div>";
                 ?>
             </label>
             <label>

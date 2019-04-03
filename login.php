@@ -1,6 +1,5 @@
 <?php
-session_start();
-$_SESSION['username'] = $_POST["username"];
+
 
 // $query = sprintf("",
 //     mysqli_real_escape_string($_POST["username"]),
@@ -21,10 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($valid) {
-        echo "Login successful";
-        header("Location: index.php");
+        require_once 'Dao/userDao.php';
+        $userDao = new userDao();
+        $userRecord = $userDao -> getUser($username);
+        if (!$userRecord || $userRecord["password"] !==$password) {
+            $noUserError = "The username or password was incorrect.";
+        } else {
+            session_start();
+            $_SESSION['username'] = $username;
+            $_SESSION['userId'] = $userRecord['user_id'];
+            echo "You have been successfully signed in.";
+            header("Location: index.php");
+        }
     }
-
 }
 
 ?>
@@ -55,16 +63,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 Username
                 <?php
                     echo "<input name=\"username\" class=\"input\" value=\"{$username}\">";
-                    echo "<div>{$usernameError}</div>";
+                    echo "<div class=\"error\">{$usernameError}</div>";
                 ?>
             </label>
             <label>
                 Password
                 <?php
                     echo "<input name=\"password\" class=\"input\">";
-                    echo "<div>{$passwordError}</div>";
+                    echo "<div class=\"error\">{$passwordError}</div>";
                 ?>
             </label>
+            <?php
+                echo "<div class=\"error\">{$noUserError}</div>";
+            ?>
             <button class="register">
                 <a href="register.php">
                     register

@@ -30,7 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($valid) {
         require_once 'Dao/userDao.php';
         $userDao = new userDao();
-        $userDao -> createUser($name, $username, $password);
+        $userId = $userDao -> createUser($name, $username, $password);
+
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['userId'] = $userId;
+
         echo "An account has been successfully created!";
         header("Location: index.php");
     }
@@ -67,21 +72,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 Name
                 <?php
                 echo "<input name=\"name\" class=\"input\" value=\"{$name}\">";
-                echo "<div>{$nameError}</div>";
+                echo "<div class=\"error\" >{$nameError}</div>";
                 ?>
             </label>
             <label>
                 Username
                 <?php
                 echo "<input name=\"username\" class=\"input\" value=\"{$username}\">";
-                echo "<div>{$usernameError}</div>";
+                echo "<div class=\"error\">{$usernameError}</div>";
                 ?>
             </label>
             <label>
                 Password
                 <?php
                 echo "<input name=\"password\" class=\"input\">";
-                echo "<div>{$passwordError}</div>";
+                echo "<div class=\"error\">{$passwordError}</div>";
                 ?>
             </label>
             <button class="register">
