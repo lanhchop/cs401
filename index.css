@@ -9,7 +9,7 @@ a {
     bottom: 0;
     right: 0;
     width: 45px;
-    padding: 0 30px 100px 0;
+    padding: 0 30px 50px 0;
 }
 
 .avatar {
@@ -42,6 +42,7 @@ input {
 .body {
     background-color: #ffffff;
     font-family: Oswald;
+    margin: 0;
 }
 
 .card {
@@ -138,9 +139,10 @@ input {
     height: 15px;
     left: 0;
     padding: 12px;
-    position: fixed;
+    position: sticky;
     right: 0;
     z-index: 999;
+    margin: none;
 }
 
 .logoutButton {
