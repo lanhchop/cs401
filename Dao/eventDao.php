@@ -21,7 +21,7 @@ class eventDao extends dao
         $stmt = $conn->prepare("SELECT * FROM event WHERE date >= NOW()");
 
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     }
 
 }
