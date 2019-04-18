@@ -69,32 +69,6 @@ HTML;
     }
 
     ?>
-    <!-- <div class="gameListCard gameContainer">
-        <div class="profile">
-            <span class="avatar"></span>
-            <p>Lanh Nguyen</p>
-        </div>
-        <div class="gameInfo">
-            <span class="gameTitle">Dominion</span>
-            <p>123 E. Idaho St.</p>
-            <p>2/28/2019</p>
-            <p>2-8 Players</p>
-        </div>
-        <div class="seating">
-            <div>
-                <?php
-                // for (i = 0; i<event.user_id.length; i++){
-                    // echo 
-                        // '<div class="circle"></div>';
-                // }
-                ?>
-            </div>
-            <form method="POST" action="schedule.php?event_id=">
-                <button type="submit" class="join" >Join</button>
-            </form>
-        </div>
-    </div> -->
-
     <a href="newGame.php">
         <img src="img/add.png" class="addGame">
     </a>
