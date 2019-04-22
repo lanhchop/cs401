@@ -5,6 +5,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hanalei Fill">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
     <link rel="shortcut icon" src="favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button.join").click(function(event) {
+                event.target.innerHTML = "Joining...";
+            });
+            $("button.leave").click(function(event) {
+                event.target.innerHTML = "Leaving...";
+            });
+        });
+        
+    </script>
+
 </head>
 
 
@@ -18,7 +31,7 @@
                     session_start();
                     if (isset($_SESSION["username"])){
                         echo "hi " . $_SESSION["username"];
-                        echo '<button><a class="logoutButton" href="logout.php"> LOGOUT </a></button>';
+                        echo '<div><button><a class="logoutButton" href="logout.php"> LOGOUT </a></button><div>';
                         // echo '<div>' . phpversion() . '</div';
                     } else{
                         echo '<a href="login.php">Sign In</a>';
@@ -38,17 +51,40 @@
     $scheduleDao = new scheduleDao();
     
     foreach ($events as $event){
-        $attendees = $scheduleDao->getAttendees($event_id);
+        $attendees = $scheduleDao->getAttendees($event['event_id']);
+        $attendees = array_column($attendees, 'user_id');
         $seats = '';
         foreach ($attendees as $attendee) {
             $seats .= '<div class="circle"></div>';
+        }
+
+        session_start();
+        $user_id = $_SESSION['userId'];
+        $joined = in_array($user_id, $attendees);
+
+        if (!$joined){
+            $joinButton = <<<HTML
+        <form class="gameButton" method="POST" action="schedule.php?event_id={$event['event_id']}">
+            <button type="submit" class="join" >
+                Join
+            </button>
+        </form>
+HTML;
+        } else{
+            $joinButton = <<<HTML
+        <form class="gameButton" method="POST" action="unschedule.php?event_id={$event['event_id']}">
+            <button type="submit" class="leave" >
+                Leave
+            </button>
+        </form>
+HTML;
         }
               
        echo <<<HTML
 <div class="gameListCard gameContainer">
     <div class="profile">
         <span class="avatar"></span>
-        <p>User #{$event['host_user_id']}</p>
+        <p>Host: {$event['username']}</p>
     </div>
     <div class="gameInfo">
         <span class="gameTitle">{$event['game']}</span>
@@ -60,9 +96,7 @@
         <div>
             {$seats}
         </div>
-        <form method="POST">
-            <button type="submit" class="join" >Join</button>
-        </form>
+        {$joinButton}
     </div>
 </div>
 HTML;
@@ -76,7 +110,6 @@ HTML;
     <footer>
         <div class="footerbar">
             Meeple Like Us 	&copy; by Lanh Nguyen
-            </button>
         </div>
     </footer>
 

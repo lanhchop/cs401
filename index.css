@@ -17,7 +17,12 @@ a {
     width: 50px;
     background-color: #123b;
     border-radius: 50%;
-    display: inline-block;
+}
+
+.body {
+    background-color: #ffffff;
+    font-family: Oswald;
+    margin: 0;
 }
 
 button {
@@ -26,23 +31,6 @@ button {
     color: white;
     height: 25px;
     font-size: 15px;
-}
-
-input {
-    border: none;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-.profile {
-    width: 50%;
-    margin: auto;
-}
-
-.body {
-    background-color: #ffffff;
-    font-family: Oswald;
-    margin: 0;
 }
 
 .card {
@@ -59,6 +47,7 @@ input {
     background-color: #123b;
     border-radius: 50%;
     display: inline-block;
+    margin: 2px;
 }
 
 .error {
@@ -67,8 +56,22 @@ input {
     font-family: Helvetica;
 }
 
+.footerbar {
+    background-color: #183661;
+    color:white;
+    bottom: 0;
+    font-size: 12px;
+    height: 15px;
+    left: 0;
+    padding: 12px;
+    position: fixed;
+    right: 0;
+    z-index: 999;
+    margin: none;
+}
+
 .gameInfo {
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 .gameListCard {
@@ -81,26 +84,34 @@ input {
 
 .gameContainer {
     display: grid;
-    grid-template-columns: 25% auto 20%;
+    grid-template-columns: 30% auto 20%;
 }
 
 .gameTitle {
     font-size: 20px;
 }
 
+
 .input {
+    border: none;
+    padding: 5px;
+    margin-bottom: 5px;
     width: 100%;
+
 }
 
-.join {
+.join, .leave {
     vertical-align: bottom;
 }
 
-.signinButton {
-    float: right;
-    margin: 30px 30px;
-    margin-top: 10px;
+.gameButton{
+margin: auto;
 }
+
+.loginCard {
+    padding-bottom: 20px;
+}
+
 
 .logo {
     width: 50px;
@@ -108,8 +119,13 @@ input {
     margin: auto;
 }
 
-.loginCard {
-    padding-bottom: 20px;
+.logoutButton {
+    background-color: white;
+    color: #183661;
+    border-radius: 5px;
+    font-family: Oswald;
+    float: right;
+    padding: 3px 20px;
 }
 
 .name {
@@ -131,30 +147,24 @@ input {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.footerbar {
-    background-color: #183661;
-    color:white;
-    bottom: 0;
-    font-size: 12px;
-    height: 15px;
-    left: 0;
-    padding: 12px;
-    position: sticky;
-    right: 0;
-    z-index: 999;
-    margin: none;
-}
-
-.logoutButton {
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    padding: 10px;
+.profile {
+    /* width: 70%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .seating {
     display: grid;
     grid-template-columns: auto;
+    align-items: center;
+}
+
+.signinButton {
+    float: right;
+    margin: 30px 30px;
+    margin-top: 10px;
 }
 
 .title {
@@ -167,6 +177,7 @@ input {
     font-family: Oswald;
     float: right;
     padding: 20px;
+    text-align: center;
 }
 
 /* ------- Register Page ------- */

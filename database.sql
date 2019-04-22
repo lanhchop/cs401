@@ -15,6 +15,9 @@ players INT(1) NOT NULL,
 );
 
 CREATE TABLE schedule(
-user_id INT(1) NOT NULL PRIMARY KEY,
+user_id INT(1) NOT NULL,
 event_id INT(1) NOT NULL,
 )
+
+ALTER TABLE schedule
+ADD CONSTRAINT schedule_unique UNIQUE(user_id, event_id);

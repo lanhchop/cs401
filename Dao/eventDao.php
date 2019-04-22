@@ -18,7 +18,16 @@ class eventDao extends dao
     public function getFutureEvents()
     {
         $conn = $this->getConnection();
-        $stmt = $conn->prepare("SELECT * FROM event WHERE date >= NOW()");
+
+        $query = <<<SQL
+SELECT *
+FROM event
+JOIN users
+  ON event.host_user_id = users.user_id
+    AND event.date >= NOW();
+SQL;
+
+        $stmt = $conn->prepare($query);
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC); 

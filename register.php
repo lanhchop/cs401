@@ -12,6 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+
+    
+
     $valid = true;
 
     if (empty($name) || strlen($name) < 1) {
@@ -25,6 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (empty($password) || strlen($password) < 6) {
         $passwordError = "Please enter a password with more than 6 characters";
         $valid = false;
+    }
+
+
+    //Check for unique username
+    require_once 'Dao/userDao.php';
+    $userDao = new userDao();
+    $existingUser = $userDao-> getUser($username);
+    if ($existingUser){
+        $valid = false;
+        $usernameError = "Username already exists.";
     }
 
     if ($valid) {

@@ -7,8 +7,19 @@ class scheduleDao extends Dao
     {
         $dbh = $this->getConnection();
         $stmt = $dbh->prepare("INSERT INTO schedule (user_id, event_id) VALUES (:user_id, :event_id);");
-        $stmt->bindValue(':user_id', $host_user_id, PDO::PARAM_INT);
-        $stmt->bindValue(':event_id', $host_user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+    }
+
+    public function leaveGame($user_id, $event_id)
+    {
+        $dbh = $this->getConnection();
+        $stmt = $dbh->prepare("DELETE from schedule where user_id=:user_id AND event_id=:event_id"); 
+        //no $ cuz sql cmd, not php variables
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':event_id', $event_id, PDO::PARAM_INT);
 
         $stmt->execute();
     }

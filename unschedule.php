@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     require_once 'Dao/scheduleDao.php';
     $scheduleDao = new scheduleDao();
-    $scheduleDao->joinGame($user_id, $event_id);
+    $scheduleDao->leaveGame($user_id, $event_id);
 
 }
 
