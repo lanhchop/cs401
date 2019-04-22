@@ -20,7 +20,6 @@
 
 </head>
 
-
 <body class="body">
     <header>
         <title>Meeple Like Us</title>

@@ -54,8 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-
-
 // TODO insert stuff into a user table in the database..
 ?>
 
